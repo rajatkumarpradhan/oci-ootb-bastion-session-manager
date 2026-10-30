@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oci-ootb-bastion-session-manager"
+version = "1.0.0"
+description = "Offline OCI Bastion session policy + lifecycle manager (built-in OCI features, no tenancy needed)"
+requires-python = ">=3.10"
+readme = "README.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
