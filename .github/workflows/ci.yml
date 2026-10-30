@@ -1,0 +1,19 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: run tests
+        run: PYTHONPATH=src python -m unittest discover -s tests -v
+      - name: validate scenario invariants
+        run: python scripts/validate.py
+      - name: demo with real output
+        run: PYTHONPATH=src python -m bastion_sessions.demo
